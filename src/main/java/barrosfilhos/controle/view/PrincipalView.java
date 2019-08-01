@@ -44,6 +44,7 @@ public class PrincipalView extends javax.swing.JFrame {
         VerificarFgts = new javax.swing.JButton();
         VerificarDae = new javax.swing.JButton();
         VerificarGps = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Guias");
@@ -76,39 +77,46 @@ public class PrincipalView extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/logo_barros.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(VerificarDarfs)
-                    .addComponent(VerificarGps))
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(VerificarDae)
-                    .addComponent(VerificarFgts))
-                .addContainerGap(55, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(VerificarDarfs)
+                            .addComponent(VerificarGps))
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(VerificarDae)
+                            .addComponent(VerificarFgts)))
+                    .addComponent(jLabel1))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarFgts});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarFgts, VerificarGps});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel1)
+                .addGap(110, 110, 110)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(VerificarDarfs)
                     .addComponent(VerificarDae))
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(VerificarFgts)
                     .addComponent(VerificarGps))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarFgts});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarFgts, VerificarGps});
 
         pack();
         setLocationRelativeTo(null);
@@ -200,5 +208,6 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton VerificarDarfs;
     private javax.swing.JButton VerificarFgts;
     private javax.swing.JButton VerificarGps;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
