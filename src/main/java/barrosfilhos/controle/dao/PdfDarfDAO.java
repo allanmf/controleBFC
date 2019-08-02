@@ -90,7 +90,7 @@ public class PdfDarfDAO {
         try {
             String sql = "insert into pdf_darf ( apuracaoDarf, cnpjDarf, "
                     + "receitaDarf, vencimentoDarf,valorPrincDarf,valorMultaDarf,"
-                    + "valorJurosDarf,valorTotalDarf) "
+                    + "valorJurosDarf,valorTotalDarf)"
                     + "values (?, ?, ?, ?,?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, pdfdarf.getApuracaoDarf());

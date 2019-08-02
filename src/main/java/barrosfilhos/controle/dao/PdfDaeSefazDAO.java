@@ -85,7 +85,7 @@ public class PdfDaeSefazDAO {
         boolean itsOK = false;
         try {
             String sql = "insert into pdf_daesefaz ( estadualDaeSefaz, docDaeSefaz, "
-                    + "validadeDaeSefaz, imp01DaeSefaz,imp02DaeSefaz,valorDaeSefaz,) "
+                    + "validadeDaeSefaz, imp01DaeSefaz,imp02DaeSefaz,valorDaeSefaz) "
                     + "values (?, ?, ?, ?,?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, pdfdaesefaz.getEstadualDaeSefaz());

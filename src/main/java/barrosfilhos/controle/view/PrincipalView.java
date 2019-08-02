@@ -15,6 +15,8 @@ import barrosfilhos.controle.utilsArquivo.ArquivoGps;
 import barrosfilhos.controle.utils.PDFFGTS;
 import barrosfilhos.controle.utils.PDFGPS;
 import barrosfilhos.controle.utilsArquivo.ArquivoDas;
+import barrosfilhos.controle.utilsArquivo.ArquivoDaeSefaz;
+import barrosfilhos.controle.utils.PDFDAESEFAZ;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,6 +50,7 @@ public class PrincipalView extends javax.swing.JFrame {
         VerificarGps = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         VerificarDas = new javax.swing.JButton();
+        VerificarDaeSefaz = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Guias");
@@ -89,51 +92,60 @@ public class PrincipalView extends javax.swing.JFrame {
             }
         });
 
+        VerificarDaeSefaz.setText("Verificar Dae SEFAZ");
+        VerificarDaeSefaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerificarDaeSefazActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(103, 103, 103)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(103, 103, 103))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(VerificarDarfs)
-                            .addComponent(VerificarGps))
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(VerificarDas)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(VerificarDae)
-                                .addComponent(VerificarFgts)))))
-                .addContainerGap(87, Short.MAX_VALUE))
+                    .addComponent(VerificarDarfs)
+                    .addComponent(VerificarGps)
+                    .addComponent(VerificarDas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(VerificarDae, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(VerificarFgts, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(VerificarDaeSefaz, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(57, 57, 57))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarDas, VerificarFgts, VerificarGps});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {VerificarDae, VerificarDaeSefaz, VerificarDarfs, VerificarDas, VerificarFgts, VerificarGps});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jLabel1)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(110, 110, 110)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(VerificarDarfs)
-                    .addComponent(VerificarDae))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(VerificarGps))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(VerificarDarfs)
+                        .addGap(11, 11, 11)
+                        .addComponent(VerificarGps)
+                        .addGap(11, 11, 11)
+                        .addComponent(VerificarDas))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(VerificarDae)
+                        .addGap(11, 11, 11)
                         .addComponent(VerificarFgts)
-                        .addGap(18, 18, 18)
-                        .addComponent(VerificarDas)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addGap(11, 11, 11)
+                        .addComponent(VerificarDaeSefaz)))
+                .addGap(32, 32, 32))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarDas, VerificarFgts, VerificarGps});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {VerificarDae, VerificarDaeSefaz, VerificarDarfs, VerificarDas, VerificarFgts, VerificarGps});
 
         pack();
         setLocationRelativeTo(null);
@@ -193,8 +205,19 @@ public class PrincipalView extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(PrincipalView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JOptionPane.showMessageDialog(null,"GPS Lido com Sucesso!");
+        JOptionPane.showMessageDialog(null,"DAS Lido com Sucesso!");
     }//GEN-LAST:event_VerificarDasActionPerformed
+
+    private void VerificarDaeSefazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerificarDaeSefazActionPerformed
+       JOptionPane.showMessageDialog(null,"Realizar Leitura de DAE SEFAZ");
+        ArquivoDaeSefaz.createFolder();
+        try {
+            PDFDAESEFAZ.LerDaeSefaz();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null,"DAE SEFAZ Lido com Sucesso!");
+    }//GEN-LAST:event_VerificarDaeSefazActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,6 +256,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton VerificarDae;
+    private javax.swing.JButton VerificarDaeSefaz;
     private javax.swing.JButton VerificarDarfs;
     private javax.swing.JButton VerificarDas;
     private javax.swing.JButton VerificarFgts;

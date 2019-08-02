@@ -59,7 +59,14 @@ public class PDFDAS {
                             i++;
                         }
                         i--;
-                        if (i == 32) {
+                        if (i == 34) {
+                            System.out.println("34");
+                            boolean itsOK = ProcessarDas.pdfDas6Impostos(conteudoPDF);
+                            document.close();
+                            if (itsOK) {
+                                ArquivoDas.moveFile(f);
+                            }
+                        } else if (i == 32) {
                             System.out.println("32");
                             boolean itsOK = ProcessarDas.pdfDas5Impostos(conteudoPDF);
                             document.close();

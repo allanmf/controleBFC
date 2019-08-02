@@ -25,7 +25,7 @@ import org.apache.pdfbox.text.PDFTextStripperByArea;
  */
 public class PDFDAESEFAZ {
 
-    public static List<PdfDaeSefaz> LerDarfs() throws IOException {
+    public static List<PdfDaeSefaz> LerDaeSefaz() throws IOException {
  List<PdfDaeSefaz> lista = new ArrayList<>();
         try {
             List<File> listFiles = null;

@@ -29,7 +29,7 @@ public class ProcessarDaeSefaz {
          */
         PdfDaeSefaz p = new PdfDaeSefaz();
         p.setCompararLinha(conteudoPDF.get(2));
-        if (p.getCompararLinha().contains("Documento de Arrecadação do Simples Nacional")) {
+        if (p.getCompararLinha().contains("Documento de Arrecadação Estadual - DAE")) {
         p.setEstadualDaeSefaz(conteudoPDF.get(4));
         p.setDocDaeSefaz(conteudoPDF.get(6));
         p.setValidadeDaeSefaz(conteudoPDF.get(8));
@@ -64,7 +64,7 @@ public class ProcessarDaeSefaz {
          */
         PdfDaeSefaz p = new PdfDaeSefaz();
         p.setCompararLinha(conteudoPDF.get(4));
-        if (p.getCompararLinha().contains("Documento de Arrecadação do Simples Nacional")) {
+        if (p.getCompararLinha().contains("Documento de Arrecadação Estadual - DAE")) {
         p.setEstadualDaeSefaz(conteudoPDF.get(6));
         p.setDocDaeSefaz(conteudoPDF.get(8));
         p.setValidadeDaeSefaz(conteudoPDF.get(10));
@@ -98,7 +98,7 @@ public class ProcessarDaeSefaz {
          */
         PdfDaeSefaz p = new PdfDaeSefaz();
         p.setCompararLinha(conteudoPDF.get(2));
-        if (p.getCompararLinha().contains("Documento de Arrecadação do Simples Nacional")) {
+        if (p.getCompararLinha().contains("Documento de Arrecadação Estadual - DAE")) {
         p.setEstadualDaeSefaz(conteudoPDF.get(4));
         p.setDocDaeSefaz(conteudoPDF.get(6));
         p.setValidadeDaeSefaz(conteudoPDF.get(8));
