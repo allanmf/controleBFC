@@ -29,6 +29,8 @@ public class ProcessarDarf {
         ValorTotal_Darf         37
          */
         PdfDarf p = new PdfDarf();
+        p.setCompararLinha(conteudoPDF.get(3));
+        if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais")) { 
         p.setApuracaoDarf(conteudoPDF.get(30));
         p.setCnpjDarf(conteudoPDF.get(31));
         p.setReceitaDarf(conteudoPDF.get(32));
@@ -47,7 +49,12 @@ public class ProcessarDarf {
             System.out.println("Já tem.");
         }
         return itsOK;
+        
     }
+        return false;
+        
+    }
+    
 
     public static boolean pdfDarfSicalc(List<String> conteudoPDF) {
         PdfDarf p = new PdfDarf();

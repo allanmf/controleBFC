@@ -6,9 +6,10 @@
 package barrosfilhos.controle.utils;
 
 
+import barrosfilhos.controle.utilsArquivo.ArquivoDarf;
 import barrosfilhos.controle.model.PdfDarf;
 import barrosfilhos.controle.process.ProcessarDarf;
-import static barrosfilhos.controle.utils.ArquivoDarf.PATHSFOLDERS;
+import static barrosfilhos.controle.utilsArquivo.ArquivoDarf.PATHSFOLDERS;
 
 import java.io.File;
 import java.io.IOException;

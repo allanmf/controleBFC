@@ -8,9 +8,11 @@ package barrosfilhos.controle.utils;
 
 
 
+
+import barrosfilhos.controle.utilsArquivo.ArquivoDae;
 import barrosfilhos.controle.model.PdfDae;
 import barrosfilhos.controle.process.ProcessarDae;
-import static barrosfilhos.controle.utils.ArquivoDae.PATHSFOLDERS;
+import static barrosfilhos.controle.utilsArquivo.ArquivoDae.PATHSFOLDERS;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public class PDFDAE {
         try {
             List<File> listFiles = null;
             for (String pasta : PATHSFOLDERS) {
-                listFiles = ArquivoDarf.justPDFFiles(pasta);
+                listFiles = ArquivoDae.justPDFFiles(pasta);
 
                 for (File f : listFiles) {
                     PDDocument document = PDDocument.load(f);

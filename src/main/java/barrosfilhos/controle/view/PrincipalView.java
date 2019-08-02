@@ -5,14 +5,16 @@
  */
 package barrosfilhos.controle.view;
 
-import barrosfilhos.controle.utils.ArquivoDae;
+import barrosfilhos.controle.utilsArquivo.ArquivoDae;
 import barrosfilhos.controle.utils.PDFDAE;
-import barrosfilhos.controle.utils.ArquivoDarf;
+import barrosfilhos.controle.utilsArquivo.ArquivoDarf;
 import barrosfilhos.controle.utils.PDFDARF;
-import barrosfilhos.controle.utils.ArquivoFgts;
-import barrosfilhos.controle.utils.ArquivoGps;
+import barrosfilhos.controle.utils.PDFDAS;
+import barrosfilhos.controle.utilsArquivo.ArquivoFgts;
+import barrosfilhos.controle.utilsArquivo.ArquivoGps;
 import barrosfilhos.controle.utils.PDFFGTS;
 import barrosfilhos.controle.utils.PDFGPS;
+import barrosfilhos.controle.utilsArquivo.ArquivoDas;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,6 +47,7 @@ public class PrincipalView extends javax.swing.JFrame {
         VerificarDae = new javax.swing.JButton();
         VerificarGps = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        VerificarDas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Guias");
@@ -79,6 +82,13 @@ public class PrincipalView extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/logo_barros.png"))); // NOI18N
 
+        VerificarDas.setText("Verificar Das");
+        VerificarDas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerificarDasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,19 +96,21 @@ public class PrincipalView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(VerificarDarfs)
                             .addComponent(VerificarGps))
                         .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(VerificarDae)
-                            .addComponent(VerificarFgts)))
-                    .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(VerificarDas)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(VerificarDae)
+                                .addComponent(VerificarFgts)))))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarFgts, VerificarGps});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarDas, VerificarFgts, VerificarGps});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,14 +121,19 @@ public class PrincipalView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(VerificarDarfs)
                     .addComponent(VerificarDae))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(VerificarFgts)
-                    .addComponent(VerificarGps))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(VerificarGps))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(VerificarFgts)
+                        .addGap(18, 18, 18)
+                        .addComponent(VerificarDas)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarFgts, VerificarGps});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarDas, VerificarFgts, VerificarGps});
 
         pack();
         setLocationRelativeTo(null);
@@ -168,6 +185,17 @@ public class PrincipalView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"GPS Lido com Sucesso!");
     }//GEN-LAST:event_VerificarGpsActionPerformed
 
+    private void VerificarDasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerificarDasActionPerformed
+       JOptionPane.showMessageDialog(null,"Realizar Leitura de DAS");
+        ArquivoDas.createFolder();
+        try {
+            PDFDAS.LerDAS();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null,"GPS Lido com Sucesso!");
+    }//GEN-LAST:event_VerificarDasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -206,6 +234,7 @@ public class PrincipalView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton VerificarDae;
     private javax.swing.JButton VerificarDarfs;
+    private javax.swing.JButton VerificarDas;
     private javax.swing.JButton VerificarFgts;
     private javax.swing.JButton VerificarGps;
     private javax.swing.JLabel jLabel1;

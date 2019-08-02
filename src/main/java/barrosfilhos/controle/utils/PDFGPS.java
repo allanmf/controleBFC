@@ -8,9 +8,11 @@ package barrosfilhos.controle.utils;
 
 
 
+import barrosfilhos.controle.utilsArquivo.ArquivoDarf;
+import barrosfilhos.controle.utilsArquivo.ArquivoGps;
 import barrosfilhos.controle.model.PdfGps;
 import barrosfilhos.controle.process.ProcessarGps;
-import static barrosfilhos.controle.utils.ArquivoGps.PATHSFOLDERS;
+import static barrosfilhos.controle.utilsArquivo.ArquivoGps.PATHSFOLDERS;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

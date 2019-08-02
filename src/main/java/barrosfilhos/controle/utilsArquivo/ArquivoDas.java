@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package barrosfilhos.controle.utils;
+package barrosfilhos.controle.utilsArquivo;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,15 +18,15 @@ import java.util.List;
  *
  * @author zigui
  */
-public class ArquivoDarf {
+public class ArquivoDas {
 
-    private static final String PASTADARF = "C:\\Verificar Obrigações\\DARF";
+    private static final String PASTADARF = "C:\\Verificar Obrigações\\DAS";
     public static final List<String> PATHSFOLDERS = new ArrayList<>();
 
     public static void createFolder() {
         PATHSFOLDERS.add(PASTADARF);
         for (String pasta : PATHSFOLDERS) {
-            File file = new File(pasta + "\\DARFVerificados");
+            File file = new File(pasta + "\\DASVerificados");
             if (!file.exists()) {
                 if (file.mkdir()) {
                     System.out.println("Pasta Criada!");
@@ -91,7 +91,7 @@ public class ArquivoDarf {
         File arquivo = new File(PASTADARF + "\\" + file.getName());
         System.out.println("arquivo " + arquivo);
         // diretorio de destino
-        File dir = new File(PASTADARF + "\\DARFVerificados\\");
+        File dir = new File(PASTADARF + "\\DASVerificados\\");
         // move o arquivo para o novo diretorio
         boolean ok = arquivo.renameTo(new File(dir + "\\" + arquivo.getName()));
         if (ok) {
@@ -107,7 +107,7 @@ public class ArquivoDarf {
             File arquivo = new File(PASTADARF + "\\" + f.getName());
             System.out.println("arquivo " + arquivo);
             // diretorio de destino
-            File dir = new File(PASTADARF + "\\DARFVerificados\\");
+            File dir = new File(PASTADARF + "\\DASVerificados\\");
             // move o arquivo para o novo diretorio
             boolean ok = arquivo.renameTo(new File(dir + "\\" + arquivo.getName()));
             if (ok) {

@@ -6,12 +6,12 @@
 package barrosfilhos.controle.utils;
 
 
-import barrosfilhos.controle.utilsArquivo.ArquivoDarf;
-import barrosfilhos.controle.utilsArquivo.ArquivoFgts;
-import barrosfilhos.controle.model.PdfFgts;
-import barrosfilhos.controle.process.ProcessarFgts;
-import static barrosfilhos.controle.utilsArquivo.ArquivoFgts.PATHSFOLDERS;
 
+
+import barrosfilhos.controle.utilsArquivo.ArquivoDas;
+import barrosfilhos.controle.model.PdfDas;
+import barrosfilhos.controle.process.ProcessarDas;
+import static barrosfilhos.controle.utilsArquivo.ArquivoDas.PATHSFOLDERS;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,14 +24,14 @@ import org.apache.pdfbox.text.PDFTextStripperByArea;
  *
  * @author Michel
  */
-public class PDFFGTS {
+public class PDFDAS {
 
-    public static List<PdfFgts> LerFGTSs() throws IOException {
- List<PdfFgts> lista = new ArrayList<>();
+    public static List<PdfDas> LerDAS() throws IOException {
+ List<PdfDas> lista = new ArrayList<>();
         try {
             List<File> listFiles = null;
             for (String pasta : PATHSFOLDERS) {
-                listFiles = ArquivoDarf.justPDFFiles(pasta);
+                listFiles = ArquivoDas.justPDFFiles(pasta);
 
                 for (File f : listFiles) {
                     PDDocument document = PDDocument.load(f);
@@ -59,20 +59,14 @@ public class PDFFGTS {
                             i++;
                         }
                         i--;
-                        if (i == 141) {
-                            System.out.println("141");
-                            boolean itsOK = ProcessarFgts.pdfFGTS2Folhas(conteudoPDF);
+                        if (i == 32) {
+                            System.out.println("32");
+                            boolean itsOK = ProcessarDas.pdfDas5Impostos(conteudoPDF);
                             document.close();
                             if (itsOK) {
-                                ArquivoFgts.moveFile(f);
+                                ArquivoDas.moveFile(f);
                             }
-                        } else if (i == 68) {
-                          boolean itsOK = ProcessarFgts.pdfFGTS1Folhas(conteudoPDF);
-                          document.close();
-                          if(itsOK) {
-                              ArquivoFgts.moveFile(f);
-                          }
-                        }
+                        } 
                     }
                     System.out.println("-----------------------------------");
                 }
