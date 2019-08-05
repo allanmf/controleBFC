@@ -27,9 +27,7 @@ public class ProcessarDae {
       
          */
         PdfDae p = new PdfDae();
-        p.setCompararLinha(conteudoPDF.get(31));
-        if (p.getCompararLinha().contains("Documento de Arrecadação do eSocial")) {
-        p.setCpfDae(conteudoPDF.get(3));
+               p.setCpfDae(conteudoPDF.get(3));
         p.setApuracaoDae(conteudoPDF.get(7));
         p.setVencimentoDae(conteudoPDF.get(9));
         p.setValorDae(conteudoPDF.get(15));
@@ -44,9 +42,8 @@ public class ProcessarDae {
         }
         return itsOK;
     }
-        return false;
-        
-    }
+            
+    
     
     
     private static boolean verificarTabelaPdfDae(PdfDae p) {

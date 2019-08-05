@@ -20,11 +20,11 @@ import java.util.List;
  */
 public class ArquivoFgts {
 
-    private static final String PASTADARF = "C:\\Verificar Obrigações\\FGTS";
+    private static final String PASTAFGTS = "C:\\Verificar Obrigações\\FGTS";
     public static final List<String> PATHSFOLDERS = new ArrayList<>();
 
     public static void createFolder() {
-        PATHSFOLDERS.add(PASTADARF);
+        PATHSFOLDERS.add(PASTAFGTS);
         for (String pasta : PATHSFOLDERS) {
             File file = new File(pasta + "\\FGTSVerificados");
             if (!file.exists()) {
@@ -38,7 +38,7 @@ public class ArquivoFgts {
     }
 
     public static void listFilesAndFolders() {
-        File file = new File(PASTADARF);
+        File file = new File(PASTAFGTS);
         File afile[] = file.listFiles();
         int i = 0;
         for (int j = afile.length; i < j; i++) {
@@ -88,10 +88,10 @@ public class ArquivoFgts {
     }
 
       public static void moveFile(File file) {
-        File arquivo = new File(PASTADARF + "\\" + file.getName());
+        File arquivo = new File(PASTAFGTS + "\\" + file.getName());
         System.out.println("arquivo " + arquivo);
         // diretorio de destino
-        File dir = new File(PASTADARF + "\\FGTSVerificados\\");
+        File dir = new File(PASTAFGTS + "\\FGTSVerificados\\");
         // move o arquivo para o novo diretorio
         boolean ok = arquivo.renameTo(new File(dir + "\\" + arquivo.getName()));
         if (ok) {
@@ -104,10 +104,10 @@ public class ArquivoFgts {
 
     public static void moveFile(List<File> listaPDFS) {
         for (File f : listaPDFS) {
-            File arquivo = new File(PASTADARF + "\\" + f.getName());
+            File arquivo = new File(PASTAFGTS + "\\" + f.getName());
             System.out.println("arquivo " + arquivo);
             // diretorio de destino
-            File dir = new File(PASTADARF + "\\FGTSVerificados\\");
+            File dir = new File(PASTAFGTS + "\\FGTSVerificados\\");
             // move o arquivo para o novo diretorio
             boolean ok = arquivo.renameTo(new File(dir + "\\" + arquivo.getName()));
             if (ok) {
@@ -122,9 +122,9 @@ public class ArquivoFgts {
     public static void copyFile() {
         try {
             // arquivos que vamos copiar
-            File toFile = new File(PASTADARF + "\\DARF IRRF 0561 - DOMÍNIO.pdf");
+            File toFile = new File(PASTAFGTS + "\\DARF IRRF 0561 - DOMÍNIO.pdf");
             // destino para onde vamos mover o arquivo
-            File fromFile = new File(PASTADARF
+            File fromFile = new File(PASTAFGTS
                     + "\\ArquivosScaneados\\DARF IRRF 0561 - DOMÍNIO.pdf");
 
             OutputStream out;

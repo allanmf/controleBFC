@@ -62,12 +62,16 @@ public class PDFDAE {
                         i--;
                         if (i == 36) {
                             System.out.println("36");
+                            PdfDae p = new PdfDae();
+                            p.setCompararLinha(conteudoPDF.get(31));
+                            if (p.getCompararLinha().contains("Documento de Arrecadação do eSocial")) {
                             boolean itsOK = ProcessarDae.pdfDae36Linhas(conteudoPDF);
                             document.close();
                             if (itsOK) {
                                 ArquivoDae.moveFile(f);
                             }
                         } 
+                        }
                     }
                     System.out.println("-----------------------------------");
                 }

@@ -28,8 +28,7 @@ public class ProcessarDaeSefaz {
         valorDaeSefaz           10
          */
         PdfDaeSefaz p = new PdfDaeSefaz();
-        p.setCompararLinha(conteudoPDF.get(2));
-        if (p.getCompararLinha().contains("Documento de Arrecadação Estadual - DAE")) {
+        
         p.setEstadualDaeSefaz(conteudoPDF.get(4));
         p.setDocDaeSefaz(conteudoPDF.get(6));
         p.setValidadeDaeSefaz(conteudoPDF.get(8));
@@ -46,9 +45,7 @@ public class ProcessarDaeSefaz {
             System.out.println("Já tem.");
         }
         return itsOK;
-    }
-        return false;
-        
+   
     }
     
     public static boolean pdfDaeSefaz2imp48linhas(List<String> conteudoPDF) {
@@ -63,8 +60,6 @@ public class ProcessarDaeSefaz {
         valorDaeSefaz           12
          */
         PdfDaeSefaz p = new PdfDaeSefaz();
-        p.setCompararLinha(conteudoPDF.get(4));
-        if (p.getCompararLinha().contains("Documento de Arrecadação Estadual - DAE")) {
         p.setEstadualDaeSefaz(conteudoPDF.get(6));
         p.setDocDaeSefaz(conteudoPDF.get(8));
         p.setValidadeDaeSefaz(conteudoPDF.get(10));
@@ -81,9 +76,7 @@ public class ProcessarDaeSefaz {
             System.out.println("Já tem.");
         }
         return itsOK;
-    }
-        return false;
-        
+    
     }
      public static boolean pdfDaeSefaz1imp(List<String> conteudoPDF) {
         /*
@@ -97,9 +90,7 @@ public class ProcessarDaeSefaz {
         valorDaeSefaz           10
          */
         PdfDaeSefaz p = new PdfDaeSefaz();
-        p.setCompararLinha(conteudoPDF.get(2));
-        if (p.getCompararLinha().contains("Documento de Arrecadação Estadual - DAE")) {
-        p.setEstadualDaeSefaz(conteudoPDF.get(4));
+         p.setEstadualDaeSefaz(conteudoPDF.get(4));
         p.setDocDaeSefaz(conteudoPDF.get(6));
         p.setValidadeDaeSefaz(conteudoPDF.get(8));
         p.setImp01DaeSefaz(conteudoPDF.get(25));
@@ -115,9 +106,7 @@ public class ProcessarDaeSefaz {
         }
         return itsOK;
     }
-        return false;
-        
-    }
+      
     
     
     

@@ -29,9 +29,7 @@ public class ProcessarGps {
         valorTotalGps           38
          */
         PdfGps p = new PdfGps();
-         p.setCompararLinha(conteudoPDF.get(15));
-        if (p.getCompararLinha().contains("GUIA DA PREVIDENCIA SOCIAL - GPS")) {
-              p.setVencimentoGps(conteudoPDF.get(30));
+        p.setVencimentoGps(conteudoPDF.get(30));
         p.setCodigoGps(conteudoPDF.get(1));
         p.setCompetenciaGps(conteudoPDF.get(31));
         p.setInscricaoGps(conteudoPDF.get(32));
@@ -50,9 +48,8 @@ public class ProcessarGps {
         }
         return itsOK;
     }
-        return false;
-    }
-    public static boolean pdfGps70Linhas(List<String> conteudoPDF) {
+
+    public static boolean pdfGps68Linhas15(List<String> conteudoPDF) {
         /* Gps Empresas Em Geral - Lucro Real e Presumido
         linhas para ler
         Nome da documentação    15
@@ -66,26 +63,27 @@ public class ProcessarGps {
         valorTotalGps           37
          */
         PdfGps p = new PdfGps();
-        p.setCompararLinha(conteudoPDF.get(15));
-        if (p.getCompararLinha().contains("GUIA DA PREVIDENCIA SOCIAL - GPS")) {
-            p.setVencimentoGps(conteudoPDF.get(30));
-            p.setCodigoGps(conteudoPDF.get(1));
-            p.setCompetenciaGps(conteudoPDF.get(31));
-            p.setInscricaoGps(conteudoPDF.get(32));
-            p.setValorInssGPS(conteudoPDF.get(33));
-            p.setValorOutrasGps(conteudoPDF.get(35));
-            p.setValorJurosGps(conteudoPDF.get(34));
-            p.setValortotalGps(conteudoPDF.get(37));
-            boolean itsOK = verificarTabelaPdfGps(p);
-            if (itsOK) {
-                PdfGpsDAO dao = new PdfGpsDAO();
-                dao.inserirPdfGps(p);
-            } else {
-                System.out.println("Já tem.");
-            }
-            return itsOK;
+        p.setVencimentoGps(conteudoPDF.get(30));
+        p.setCodigoGps(conteudoPDF.get(1));
+        p.setCompetenciaGps(conteudoPDF.get(31));
+        p.setInscricaoGps(conteudoPDF.get(32));
+        p.setValorInssGPS(conteudoPDF.get(33));
+        p.setValorOutrasGps(conteudoPDF.get(35));
+        p.setValorJurosGps(conteudoPDF.get(34));
+        p.setValortotalGps(conteudoPDF.get(37));
+        boolean itsOK = verificarTabelaPdfGps(p);
+        if (itsOK) {
+            PdfGpsDAO dao = new PdfGpsDAO();
+            dao.inserirPdfGps(p);
         } else {
-            /* GPS - Empresas Simples Nacional
+            System.out.println("Já tem.");
+        }
+        return itsOK;
+    }
+
+    public static boolean pdfGps68Linhas14(List<String> conteudoPDF) {
+
+        /* GPS - Empresas Simples Nacional
         linhas para ler
         Nome da documentação    15
         vencimentoGps           30
@@ -96,28 +94,24 @@ public class ProcessarGps {
         valorOutrasGps          Não tem 69
         valorJurosGps           Não Tem 70 
         valorTotalGps           35
-             */
-            p.setCompararLinha(conteudoPDF.get(14));
-            if (p.getCompararLinha().contains("GUIA DA PREVIDENCIA SOCIAL - GPS")) {
-                p.setVencimentoGps(conteudoPDF.get(29));
-                p.setCodigoGps(conteudoPDF.get(0));
-                p.setCompetenciaGps(conteudoPDF.get(31));
-                p.setInscricaoGps(conteudoPDF.get(30));
-                p.setValorInssGPS(conteudoPDF.get(32));
-                p.setValortotalGps(conteudoPDF.get(35));
+         */
+        PdfGps p = new PdfGps();
+        p.setVencimentoGps(conteudoPDF.get(29));
+        p.setCodigoGps(conteudoPDF.get(0));
+        p.setCompetenciaGps(conteudoPDF.get(31));
+        p.setInscricaoGps(conteudoPDF.get(30));
+        p.setValorInssGPS(conteudoPDF.get(32));
+        p.setValortotalGps(conteudoPDF.get(35));
 
-                boolean itsOK = verificarTabelaPdfGps(p);
+        boolean itsOK = verificarTabelaPdfGps(p);
 
-                if (itsOK) {
-                    PdfGpsDAO dao = new PdfGpsDAO();
-                    dao.inserirPdfGps(p);
-                } else {
-                    System.out.println("Já tem.");
-                }
-                return itsOK;
-            }
+        if (itsOK) {
+            PdfGpsDAO dao = new PdfGpsDAO();
+            dao.inserirPdfGps(p);
+        } else {
+            System.out.println("Já tem.");
         }
-        return false;
+        return itsOK;
     }
 
     private static boolean verificarTabelaPdfGps(PdfGps p) {

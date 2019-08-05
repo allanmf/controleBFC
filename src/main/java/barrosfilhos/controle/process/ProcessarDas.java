@@ -26,8 +26,6 @@ public static boolean pdfDas6Impostos(List<String> conteudoPDF) {
       
          */
         PdfDas p = new PdfDas();
-        p.setCompararLinha(conteudoPDF.get(29));
-        if (p.getCompararLinha().contains("Documento de Arrecadação do Simples Nacional")) {
         p.setCnpjDas(conteudoPDF.get(2).substring(0, 18));
         p.setApuracaoDas(conteudoPDF.get(15));
         p.setVencimentoDas(conteudoPDF.get(6));
@@ -43,9 +41,7 @@ public static boolean pdfDas6Impostos(List<String> conteudoPDF) {
         }
         return itsOK;
     }
-        return false;
-        
-    }
+      
     public static boolean pdfDas5Impostos(List<String> conteudoPDF) {
         /*
         linhas para ler
@@ -57,8 +53,6 @@ public static boolean pdfDas6Impostos(List<String> conteudoPDF) {
       
          */
         PdfDas p = new PdfDas();
-        p.setCompararLinha(conteudoPDF.get(27));
-        if (p.getCompararLinha().contains("Documento de Arrecadação do Simples Nacional")) {
         p.setCnpjDas(conteudoPDF.get(2).substring(0, 18));
         p.setApuracaoDas(conteudoPDF.get(15));
         p.setVencimentoDas(conteudoPDF.get(6));
@@ -74,9 +68,7 @@ public static boolean pdfDas6Impostos(List<String> conteudoPDF) {
         }
         return itsOK;
     }
-        return false;
-        
-    }
+       
     
     
     

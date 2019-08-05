@@ -29,8 +29,6 @@ public class ProcessarDarf {
         ValorTotal_Darf         37
          */
         PdfDarf p = new PdfDarf();
-        p.setCompararLinha(conteudoPDF.get(3));
-        if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais")) { 
         p.setApuracaoDarf(conteudoPDF.get(30));
         p.setCnpjDarf(conteudoPDF.get(31));
         p.setReceitaDarf(conteudoPDF.get(32));
@@ -49,16 +47,10 @@ public class ProcessarDarf {
             System.out.println("Já tem.");
         }
         return itsOK;
-        
-    }
-        return false;
-        
-    }
-    
 
-    public static boolean pdfDarfSicalc(List<String> conteudoPDF) {
-        PdfDarf p = new PdfDarf();
-        p.setCompararLinha(conteudoPDF.get(12));
+    }
+
+    public static boolean pdfDarfSicalclinha12(List<String> conteudoPDF) {
          /*
         linhas para ler
         Nome da documentação    12
@@ -71,25 +63,27 @@ public class ProcessarDarf {
         ValorJuros_Darf         8
         ValorTotal_Darf         9
          */
-        if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais")) {
-            p.setApuracaoDarf(conteudoPDF.get(2));
-            p.setCnpjDarf(conteudoPDF.get(3));
-            p.setReceitaDarf(conteudoPDF.get(4));
-            p.setVencimentoDarf(conteudoPDF.get(5));
-            p.setValorPrincDarf(conteudoPDF.get(6));
-            p.setValorMultaDarf(conteudoPDF.get(7));
-            p.setValorJurosDarf(conteudoPDF.get(8));
-            p.setValorTotalDarf(conteudoPDF.get(9));
-            boolean itsOK = verificarTabelaPdfDarf(p);
-            if (itsOK) {
-                PdfDarfDAO dao = new PdfDarfDAO();
-                dao.inserirPdfDARF(p);
-            } else {
-                System.out.println("Já tem.");
-            }
-            return itsOK;
-       } else {
-             /*
+      
+        PdfDarf p = new PdfDarf();
+        p.setApuracaoDarf(conteudoPDF.get(2));
+        p.setCnpjDarf(conteudoPDF.get(3));
+        p.setReceitaDarf(conteudoPDF.get(4));
+        p.setVencimentoDarf(conteudoPDF.get(5));
+        p.setValorPrincDarf(conteudoPDF.get(6));
+        p.setValorMultaDarf(conteudoPDF.get(7));
+        p.setValorJurosDarf(conteudoPDF.get(8));
+        p.setValorTotalDarf(conteudoPDF.get(9));
+        boolean itsOK = verificarTabelaPdfDarf(p);
+        if (itsOK) {
+            PdfDarfDAO dao = new PdfDarfDAO();
+            dao.inserirPdfDARF(p);
+        } else {
+            System.out.println("Já tem.");
+        }
+        return itsOK;
+    }
+    public static boolean pdfDarfSicalclinha13(List<String> conteudoPDF) {
+          /*
         linhas para ler
         Nome da documentação    13
         Apuracao_Darf           3
@@ -101,9 +95,8 @@ public class ProcessarDarf {
         ValorJuros_Darf         9
         ValorTotal_Darf         10
          */
-            p.setCompararLinha(conteudoPDF.get(13));
-            if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais"))
-            p.setApuracaoDarf(conteudoPDF.get(3));
+        PdfDarf p = new PdfDarf();
+        p.setApuracaoDarf(conteudoPDF.get(3));
             p.setCnpjDarf(conteudoPDF.get(4));
             p.setReceitaDarf(conteudoPDF.get(5));
             p.setVencimentoDarf(conteudoPDF.get(6));
@@ -121,8 +114,9 @@ public class ProcessarDarf {
                 System.out.println("Já tem.");
             }
             return itsOK;
-        }
     }
+    
+
     public static boolean pdfDarfComCod68(List<String> conteudoPDF) {
         /*
         linhas para ler
@@ -138,8 +132,9 @@ public class ProcessarDarf {
          */
         PdfDarf p = new PdfDarf();
         p.setCompararLinha(conteudoPDF.get(12));
-        if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais"))
-        p.setApuracaoDarf(conteudoPDF.get(2));
+        if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais")) {
+            p.setApuracaoDarf(conteudoPDF.get(2));
+        }
         p.setCnpjDarf(conteudoPDF.get(3));
         p.setReceitaDarf(conteudoPDF.get(4));
         p.setVencimentoDarf(conteudoPDF.get(5));
@@ -169,5 +164,4 @@ public class ProcessarDarf {
         return itsOK;
     }
 
-   
 }

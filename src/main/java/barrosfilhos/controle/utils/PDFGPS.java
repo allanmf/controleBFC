@@ -5,9 +5,6 @@
  */
 package barrosfilhos.controle.utils;
 
-
-
-
 import barrosfilhos.controle.utilsArquivo.ArquivoDarf;
 import barrosfilhos.controle.utilsArquivo.ArquivoGps;
 import barrosfilhos.controle.model.PdfGps;
@@ -28,7 +25,7 @@ import org.apache.pdfbox.text.PDFTextStripperByArea;
 public class PDFGPS {
 
     public static List<PdfGps> LerGps() throws IOException {
- List<PdfGps> lista = new ArrayList<>();
+        List<PdfGps> lista = new ArrayList<>();
         try {
             List<File> listFiles = null;
             for (String pasta : PATHSFOLDERS) {
@@ -61,28 +58,50 @@ public class PDFGPS {
                         }
                         i--;
                         if (i == 72) {
-                            System.out.println("72");                            
-                            boolean itsOK = ProcessarGps.pdfGps72Linhas(conteudoPDF);
-                            document.close();
-                            if (itsOK) {
-                                ArquivoGps.moveFile(f);
+                            System.out.println("72");
+                            PdfGps p = new PdfGps();
+                            p.setCompararLinha(conteudoPDF.get(15));
+                            if (p.getCompararLinha().contains("GUIA DA PREVIDENCIA SOCIAL - GPS")) {
+                                boolean itsOK = ProcessarGps.pdfGps72Linhas(conteudoPDF);
+                                document.close();
+                                if (itsOK) {
+                                    ArquivoGps.moveFile(f);
+                                }
                             }
                         } else if (i == 68) {
-                          boolean itsOK = ProcessarGps.pdfGps70Linhas(conteudoPDF);
-                          document.close();
-                          if(itsOK) {
-                              ArquivoGps.moveFile(f);
-                          }
+                            System.out.println("68");
+                            PdfGps p = new PdfGps();
+                            p.setCompararLinha(conteudoPDF.get(15));
+                            if (p.getCompararLinha().contains("GUIA DA PREVIDENCIA SOCIAL - GPS")) {
+                                boolean itsOK = ProcessarGps.pdfGps68Linhas15(conteudoPDF);
+                                document.close();
+                                if (itsOK) {
+                                    ArquivoGps.moveFile(f);
+                                }
+                            }
+                             }else if (i == 68) {
+                            System.out.println("68");
+                            PdfGps p = new PdfGps();
+                            p.setCompararLinha(conteudoPDF.get(14));
+                            if (p.getCompararLinha().contains("GUIA DA PREVIDENCIA SOCIAL - GPS")) {
+                                boolean itsOK = ProcessarGps.pdfGps68Linhas14(conteudoPDF);
+                                document.close();
+                                if (itsOK) {
+                                    ArquivoGps.moveFile(f);
+                                }
+                            }
+                            
+                            
+                            }
                         }
+                        System.out.println("-----------------------------------");
                     }
-                    System.out.println("-----------------------------------");
                 }
-            }
-            // Arquivo.moveFile(listFiles);
-        } catch (IOException e) {
+                // Arquivo.moveFile(listFiles);
+            }catch (IOException e) {
             System.out.println("ERRO readRows " + e.getMessage());
         }
-        return lista;
-    }
+            return lista;
+        }
 
-}
+    }

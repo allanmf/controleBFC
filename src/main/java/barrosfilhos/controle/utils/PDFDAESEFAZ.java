@@ -5,7 +5,6 @@
  */
 package barrosfilhos.controle.utils;
 
-
 import barrosfilhos.controle.utilsArquivo.ArquivoDaeSefaz;
 import barrosfilhos.controle.model.PdfDaeSefaz;
 import barrosfilhos.controle.process.ProcessarDaeSefaz;
@@ -26,7 +25,7 @@ import org.apache.pdfbox.text.PDFTextStripperByArea;
 public class PDFDAESEFAZ {
 
     public static List<PdfDaeSefaz> LerDaeSefaz() throws IOException {
- List<PdfDaeSefaz> lista = new ArrayList<>();
+        List<PdfDaeSefaz> lista = new ArrayList<>();
         try {
             List<File> listFiles = null;
             for (String pasta : PATHSFOLDERS) {
@@ -60,30 +59,49 @@ public class PDFDAESEFAZ {
                         i--;
                         if (i == 49) {
                             System.out.println("49");
-                            boolean itsOK = ProcessarDaeSefaz.pdfDaeSefaz2imp49linhas(conteudoPDF);
+                            PdfDaeSefaz p = new PdfDaeSefaz();
+                            p.setCompararLinha(conteudoPDF.get(2));
+                            if (p.getCompararLinha().contains("Documento de Arrecadação Estadual - DAE")) {
+                                boolean itsOK = ProcessarDaeSefaz.pdfDaeSefaz2imp49linhas(conteudoPDF);
+                                document.close();
+                                if (itsOK) {
+                                    ArquivoDaeSefaz.moveFile(f);
+                                }
+                            }
+                        } else if (i == 48) {
+                            System.out.println("48");
+                            PdfDaeSefaz p = new PdfDaeSefaz();
+                            p.setCompararLinha(conteudoPDF.get(4));
+                            if (p.getCompararLinha().contains("Documento de Arrecadação Estadual - DAE")) {
+                                boolean itsOK = ProcessarDaeSefaz.pdfDaeSefaz2imp48linhas(conteudoPDF);
+                                document.close();
+                                if (itsOK) {
+                                    ArquivoDaeSefaz.moveFile(f);
+                                }
+                            }
+                        } else if (i == 41) {
+                            System.out.println("41");
+                            PdfDaeSefaz p = new PdfDaeSefaz();
+                            p.setCompararLinha(conteudoPDF.get(2));
+                            if (p.getCompararLinha().contains("Documento de Arrecadação Estadual - DAE")) {
+                            boolean itsOK = ProcessarDaeSefaz.pdfDaeSefaz1imp(conteudoPDF);
                             document.close();
                             if (itsOK) {
                                 ArquivoDaeSefaz.moveFile(f);
                             }
-                        } else if (i == 48) {
-                          boolean itsOK = ProcessarDaeSefaz.pdfDaeSefaz2imp48linhas(conteudoPDF);
-                          document.close();
-                          if(itsOK) {
-                              ArquivoDaeSefaz.moveFile(f);
-                          }
-                        }else if (i == 41) {
-                          boolean itsOK = ProcessarDaeSefaz.pdfDaeSefaz1imp(conteudoPDF);
-                          document.close();
-                          if(itsOK) {
-                              ArquivoDaeSefaz.moveFile(f);
-                          }
-                        }else if (i == 39) {
-                          boolean itsOK = ProcessarDaeSefaz.pdfDaeSefaz1imp(conteudoPDF);
-                          document.close();
-                          if(itsOK) {
-                              ArquivoDaeSefaz.moveFile(f);
-                     }
-                        } 
+                            }
+                        } else if (i == 39) {
+                            System.out.println("39");
+                            PdfDaeSefaz p = new PdfDaeSefaz();
+                            p.setCompararLinha(conteudoPDF.get(2));
+                            if (p.getCompararLinha().contains("Documento de Arrecadação Estadual - DAE")) {
+                            boolean itsOK = ProcessarDaeSefaz.pdfDaeSefaz1imp(conteudoPDF);
+                            document.close();
+                            if (itsOK) {
+                                ArquivoDaeSefaz.moveFile(f);
+                            }
+                            }
+                        }
                     }
                     System.out.println("-----------------------------------");
                 }

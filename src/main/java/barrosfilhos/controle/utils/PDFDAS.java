@@ -5,9 +5,6 @@
  */
 package barrosfilhos.controle.utils;
 
-
-
-
 import barrosfilhos.controle.utilsArquivo.ArquivoDas;
 import barrosfilhos.controle.model.PdfDas;
 import barrosfilhos.controle.process.ProcessarDas;
@@ -27,7 +24,7 @@ import org.apache.pdfbox.text.PDFTextStripperByArea;
 public class PDFDAS {
 
     public static List<PdfDas> LerDAS() throws IOException {
- List<PdfDas> lista = new ArrayList<>();
+        List<PdfDas> lista = new ArrayList<>();
         try {
             List<File> listFiles = null;
             for (String pasta : PATHSFOLDERS) {
@@ -61,28 +58,36 @@ public class PDFDAS {
                         i--;
                         if (i == 34) {
                             System.out.println("34");
-                            boolean itsOK = ProcessarDas.pdfDas6Impostos(conteudoPDF);
-                            document.close();
-                            if (itsOK) {
-                                ArquivoDas.moveFile(f);
+                            PdfDas p = new PdfDas();
+                            p.setCompararLinha(conteudoPDF.get(29));
+                            if (p.getCompararLinha().contains("Documento de Arrecadação do Simples Nacional")) {
+                                boolean itsOK = ProcessarDas.pdfDas6Impostos(conteudoPDF);
+                                document.close();
+                                if (itsOK) {
+                                    ArquivoDas.moveFile(f);
+                                }
                             }
                         } else if (i == 32) {
                             System.out.println("32");
-                            boolean itsOK = ProcessarDas.pdfDas5Impostos(conteudoPDF);
-                            document.close();
-                            if (itsOK) {
-                                ArquivoDas.moveFile(f);
+                            PdfDas p = new PdfDas();
+                            p.setCompararLinha(conteudoPDF.get(27));
+                            if (p.getCompararLinha().contains("Documento de Arrecadação do Simples Nacional")) {
+                                boolean itsOK = ProcessarDas.pdfDas5Impostos(conteudoPDF);
+                                document.close();
+                                if (itsOK) {
+                                    ArquivoDas.moveFile(f);
+                                }
                             }
-                        } 
+                        }
+                        }
+                        System.out.println("-----------------------------------");
                     }
-                    System.out.println("-----------------------------------");
                 }
-            }
-            // Arquivo.moveFile(listFiles);
-        } catch (IOException e) {
+                // Arquivo.moveFile(listFiles);
+            }catch (IOException e) {
             System.out.println("ERRO readRows " + e.getMessage());
         }
-        return lista;
-    }
+            return lista;
+        }
 
-}
+    }

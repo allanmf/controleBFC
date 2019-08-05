@@ -5,7 +5,6 @@
  */
 package barrosfilhos.controle.utils;
 
-
 import barrosfilhos.controle.utilsArquivo.ArquivoDarf;
 import barrosfilhos.controle.utilsArquivo.ArquivoFgts;
 import barrosfilhos.controle.model.PdfFgts;
@@ -27,7 +26,7 @@ import org.apache.pdfbox.text.PDFTextStripperByArea;
 public class PDFFGTS {
 
     public static List<PdfFgts> LerFGTSs() throws IOException {
- List<PdfFgts> lista = new ArrayList<>();
+        List<PdfFgts> lista = new ArrayList<>();
         try {
             List<File> listFiles = null;
             for (String pasta : PATHSFOLDERS) {
@@ -60,18 +59,27 @@ public class PDFFGTS {
                         }
                         i--;
                         if (i == 141) {
-                            System.out.println("141");
-                            boolean itsOK = ProcessarFgts.pdfFGTS2Folhas(conteudoPDF);
-                            document.close();
-                            if (itsOK) {
-                                ArquivoFgts.moveFile(f);
+                            //  System.out.println("141");
+                            PdfFgts p = new PdfFgts();
+                            p.setCompararLinha(conteudoPDF.get(73));
+                            if (p.getCompararLinha().contains("GRF - GUIA DE RECOLHIMENTO DO FGTS")) {
+                                boolean itsOK = ProcessarFgts.pdfFGTS2Folhas(conteudoPDF);
+                                document.close();
+                                if (itsOK) {
+                                    ArquivoFgts.moveFile(f);
+                                }
                             }
                         } else if (i == 68) {
-                          boolean itsOK = ProcessarFgts.pdfFGTS1Folhas(conteudoPDF);
-                          document.close();
-                          if(itsOK) {
-                              ArquivoFgts.moveFile(f);
-                          }
+                            //    System.out.println("68");
+                            PdfFgts p = new PdfFgts();
+                            p.setCompararLinha(conteudoPDF.get(2));
+                            if (p.getCompararLinha().contains("GRF - GUIA DE RECOLHIMENTO DO FGTS")) {
+                                boolean itsOK = ProcessarFgts.pdfFGTS1Folhas(conteudoPDF);
+                                document.close();
+                                if (itsOK) {
+                                    ArquivoFgts.moveFile(f);
+                                }
+                            }
                         }
                     }
                     System.out.println("-----------------------------------");

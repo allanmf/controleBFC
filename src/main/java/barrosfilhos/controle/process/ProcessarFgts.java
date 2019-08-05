@@ -36,8 +36,6 @@ public class ProcessarFgts {
 
          */
         PdfFgts p = new PdfFgts();
-         p.setCompararLinha(conteudoPDF.get(73));
-       if (p.getCompararLinha().contains("GRF - GUIA DE RECOLHIMENTO DO FGTS")) {  
         p.setFpasFgts(conteudoPDF.get(107));
         p.setSimplesFgts(conteudoPDF.get(110));
         p.setRemuneracaoFgts(conteudoPDF.get(114));
@@ -63,9 +61,7 @@ public class ProcessarFgts {
         }
         return itsOK;
     } 
-        return false;
-    
-    }
+       
     
     
     
@@ -91,8 +87,6 @@ public class ProcessarFgts {
 
          */
         PdfFgts p = new PdfFgts();
-        p.setCompararLinha(conteudoPDF.get(2));
-       if (p.getCompararLinha().contains("GRF - GUIA DE RECOLHIMENTO DO FGTS")) {  
         p.setFpasFgts(conteudoPDF.get(36));
         p.setSimplesFgts(conteudoPDF.get(39));
         p.setRemuneracaoFgts(conteudoPDF.get(43));
@@ -118,10 +112,7 @@ public class ProcessarFgts {
         }
         return itsOK;
     }
-        return false;
-       
-    }
-    
+      
     
 
     private static boolean verificarTabelaPdfDarf(PdfFgts p) {

@@ -60,24 +60,59 @@ public class PDFDARF {
                         i--;
                         if (i == 82) {
                             System.out.println("82");
+                            PdfDarf p = new PdfDarf();
+                            p.setCompararLinha(conteudoPDF.get(3));
+                            if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais")){
+                            boolean itsOK = ProcessarDarf.pdfDarfDominio82(conteudoPDF);
+                            document.close();
+                            if (itsOK) {
+                                ArquivoDarf.moveFile(f);    
+                            }                            
+                            }
+                        } else if (i == 80){
+                            System.out.println("80");
+                            PdfDarf p = new PdfDarf();                          
+                            p.setCompararLinha(conteudoPDF.get(3));
+                            if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais")){
                             boolean itsOK = ProcessarDarf.pdfDarfDominio82(conteudoPDF);
                             document.close();
                             if (itsOK) {
                                 ArquivoDarf.moveFile(f);
                             }
+                            }
                         } else if (i == 70) {
-                          boolean itsOK = ProcessarDarf.pdfDarfSicalc(conteudoPDF);
-                          document.close();
-                          if(itsOK) {
-                              ArquivoDarf.moveFile(f);
-                          }
+                            PdfDarf p = new PdfDarf();                          
+                            p.setCompararLinha(conteudoPDF.get(13));
+                            if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais")){
+                            boolean itsOK = ProcessarDarf.pdfDarfSicalclinha13(conteudoPDF);
+                            document.close();
+                            if (itsOK) {
+                                ArquivoDarf.moveFile(f);
+                            }
+                            }else{
+                             p.setCompararLinha(conteudoPDF.get(12));   
+                            if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais")){
+                            boolean itsOK = ProcessarDarf.pdfDarfSicalclinha12(conteudoPDF);
+                            document.close();
+                            if (itsOK) {
+                                ArquivoDarf.moveFile(f);
+                            }    
+                            } 
+                                  
+                            
+                            }
                         }else if (i == 68) {
-                          boolean itsOK = ProcessarDarf.pdfDarfComCod68(conteudoPDF);
-                          document.close();
-                          if(itsOK) {
-                              ArquivoDarf.moveFile(f);
-                          }
+                          PdfDarf p = new PdfDarf();                          
+                            p.setCompararLinha(conteudoPDF.get(12));
+                            if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais")){
+                            boolean itsOK = ProcessarDarf.pdfDarfComCod68(conteudoPDF);
+                            document.close();
+                            if (itsOK) {
+                                ArquivoDarf.moveFile(f);
+                            }
+                            }
                         }
+                        
                     }
                     System.out.println("-----------------------------------");
                 }
@@ -90,3 +125,4 @@ public class PDFDARF {
     }
 
 }
+    
