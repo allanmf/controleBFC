@@ -17,7 +17,7 @@ public class PdfFgts {
     private String simplesFgts;
     private String remuneracaoFgts;
     private String trabalhadoresFgts;
-    private String aliquotafgts;
+    private String aliquotaFgts;
     private String codRecolhiFgts;
     private String idRecolhiFgts;
     private String inscricaoFgts;
@@ -27,6 +27,13 @@ public class PdfFgts {
     private String encargosFgts;
     private String totalFgts;
     private String dtGeracaoFgts;
+    private String remuneracao02Fgts;
+    private String trabalhadores02Fgts;
+    private String aliquota02Fgts;
+    private String deposito02Fgts;
+    private String encargos02Fgts;
+    private String total02Fgts;
+    
 
     public int getIdFgts() {
         return idFgts;
@@ -76,12 +83,12 @@ public class PdfFgts {
         this.trabalhadoresFgts = trabalhadoresFgts;
     }
 
-    public String getAliquotafgts() {
-        return aliquotafgts;
+    public String getAliquotaFgts() {
+        return aliquotaFgts;
     }
 
-    public void setAliquotafgts(String aliquotafgts) {
-        this.aliquotafgts = aliquotafgts;
+    public void setAliquotaFgts(String aliquotafgts) {
+        this.aliquotaFgts = aliquotafgts;
     }
 
     public String getCodRecolhiFgts() {
@@ -154,6 +161,54 @@ public class PdfFgts {
 
     public void setDtGeracaoFgts(String dtGeracaoFgts) {
         this.dtGeracaoFgts = dtGeracaoFgts;
+    }
+
+    public String getRemuneracao02Fgts() {
+        return remuneracao02Fgts;
+    }
+
+    public void setRemuneracao02Fgts(String remuneracao02Fgts) {
+        this.remuneracao02Fgts = remuneracao02Fgts;
+    }
+
+    public String getTrabalhadores02Fgts() {
+        return trabalhadores02Fgts;
+    }
+
+    public void setTrabalhadores02Fgts(String trabalhadores02Fgts) {
+        this.trabalhadores02Fgts = trabalhadores02Fgts;
+    }
+
+    public String getAliquota02Fgts() {
+        return aliquota02Fgts;
+    }
+
+    public void setAliquota02Fgts(String aliquota02Fgts) {
+        this.aliquota02Fgts = aliquota02Fgts;
+    }
+
+    public String getDeposito02Fgts() {
+        return deposito02Fgts;
+    }
+
+    public void setDeposito02Fgts(String deposito02Fgts) {
+        this.deposito02Fgts = deposito02Fgts;
+    }
+
+    public String getEncargos02Fgts() {
+        return encargos02Fgts;
+    }
+
+    public void setEncargos02Fgts(String encargos02Fgts) {
+        this.encargos02Fgts = encargos02Fgts;
+    }
+
+    public String getTotal02Fgts() {
+        return total02Fgts;
+    }
+
+    public void setTotal02Fgts(String total02Fgts) {
+        this.total02Fgts = total02Fgts;
     }
     
     

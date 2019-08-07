@@ -33,6 +33,12 @@ public class ProcessarFgts {
      encargosFgts	     94
      totalFgts	             128
      dtGeracao	             140
+     remuneracao02Fgts	     43
+     trabalhadores02Fgts     47
+     aliquota02Fgts	     53
+     deposito02Fgts	     61
+     encargos02Fgts	     59
+     total02Fgts             57
 
          */
         PdfFgts p = new PdfFgts();
@@ -40,7 +46,7 @@ public class ProcessarFgts {
         p.setSimplesFgts(conteudoPDF.get(110));
         p.setRemuneracaoFgts(conteudoPDF.get(114));
         p.setTrabalhadoresFgts(conteudoPDF.get(118));
-        p.setAliquotafgts(conteudoPDF.get(124));
+        p.setAliquotaFgts(conteudoPDF.get(124));
         p.setCodRecolhiFgts(conteudoPDF.get(99));
         p.setIdRecolhiFgts(conteudoPDF.get(112));
         p.setInscricaoFgts(conteudoPDF.get(116));
@@ -50,6 +56,12 @@ public class ProcessarFgts {
         p.setEncargosFgts(conteudoPDF.get(94));
         p.setTotalFgts(conteudoPDF.get(128));
         p.setDtGeracaoFgts(conteudoPDF.get(140));
+        p.setRemuneracao02Fgts(conteudoPDF.get(43));
+        p.setTrabalhadores02Fgts(conteudoPDF.get(47));
+        p.setAliquota02Fgts(conteudoPDF.get(53));
+        p.setDeposito02Fgts(conteudoPDF.get(61));
+        p.setEncargos02Fgts(conteudoPDF.get(59));
+        p.setTotal02Fgts(conteudoPDF.get(57));
 
         boolean itsOK = verificarTabelaPdfDarf(p);
 
@@ -60,14 +72,10 @@ public class ProcessarFgts {
             System.out.println("Já tem.");
         }
         return itsOK;
-    } 
-       
-    
-    
-    
+    }
 
     public static boolean pdfFGTS1Folhas(List<String> conteudoPDF) {
-     /*
+        /*
         linhas para ler
      Nome da documentação    2
      fpasFgts	             36
@@ -84,6 +92,8 @@ public class ProcessarFgts {
      encargosFgts	     59
      totalFgts	             57
      dtGeracao	             67
+     
+	    
 
          */
         PdfFgts p = new PdfFgts();
@@ -91,7 +101,7 @@ public class ProcessarFgts {
         p.setSimplesFgts(conteudoPDF.get(39));
         p.setRemuneracaoFgts(conteudoPDF.get(43));
         p.setTrabalhadoresFgts(conteudoPDF.get(47));
-        p.setAliquotafgts(conteudoPDF.get(53));
+        p.setAliquotaFgts(conteudoPDF.get(53));
         p.setCodRecolhiFgts(conteudoPDF.get(37));
         p.setIdRecolhiFgts(conteudoPDF.get(41));
         p.setInscricaoFgts(conteudoPDF.get(45));
@@ -101,6 +111,7 @@ public class ProcessarFgts {
         p.setEncargosFgts(conteudoPDF.get(59));
         p.setTotalFgts(conteudoPDF.get(57));
         p.setDtGeracaoFgts(conteudoPDF.get(67));
+        
 
         boolean itsOK = verificarTabelaPdfDarf(p);
 
@@ -112,8 +123,6 @@ public class ProcessarFgts {
         }
         return itsOK;
     }
-      
-    
 
     private static boolean verificarTabelaPdfDarf(PdfFgts p) {
         boolean itsOK = false;

@@ -37,7 +37,11 @@ public class PdfFgtsDAO {
                     + "and competenciaFgts = ?"
                     + "and validadeFgts = ? "
                     + "and totalFgts = ? "
-                    + "and dtGeracaoFgts = ? ";
+                    + "and dtGeracaoFgts = ? "
+                    + "and remuneracao02Fgts = ? "
+                    + "and trabalhadores02Fgts = ? "
+                    + "and total02Fgts = ? ";
+
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, p.getRemuneracaoFgts());
             ps.setString(2, p.getTrabalhadoresFgts());
@@ -46,6 +50,9 @@ public class PdfFgtsDAO {
             ps.setString(5, p.getValidadeFgts());
             ps.setString(6, p.getTotalFgts());
             ps.setString(7, p.getDtGeracaoFgts());
+            ps.setString(8, p.getRemuneracao02Fgts());
+            ps.setString(9, p.getTrabalhadores02Fgts());
+            ps.setString(10, p.getTotal02Fgts());
             ResultSet rs = ps.executeQuery();
             pdfsfgts = correrTabela(rs);
         } catch (SQLException e) {
@@ -64,7 +71,7 @@ public class PdfFgtsDAO {
                 String simplesFgts = rs.getString("simplesFgts");
                 String remuneracaoFgts = rs.getString("remuneracaoFgts");
                 String trabalhadoresFgts = rs.getString("trabalhadoresFgts");
-                String aliquotafgts = rs.getString("aliquotafgts");
+                String aliquotaFgts = rs.getString("aliquotaFgts");
                 String codRecolhiFgts = rs.getString("codRecolhiFgts");
                 String idRecolhiFgts = rs.getString("idRecolhiFgts");
                 String inscricaoFgts = rs.getString("inscricaoFgts");
@@ -74,7 +81,12 @@ public class PdfFgtsDAO {
                 String encargosFgts = rs.getString("encargosFgts");
                 String totalFgts = rs.getString("totalFgts");
                 String dtGeracaoFgts = rs.getString("dtGeracaoFgts");
-                
+                String remuneracao02Fgts = rs.getString("remuneracao02Fgts");
+                String trabalhadores02Fgts = rs.getString("trabalhadores02Fgts");
+                String aliquota02Fgts = rs.getString("aliquota02Fgts");
+                String deposito02Fgts = rs.getString("deposito02Fgts");
+                String encargos02Fgts = rs.getString("encargos02Fgts");
+                String total02Fgts = rs.getString("total02Fgts");
 
                 PdfFgts p = new PdfFgts();
                 p.setIdFgts(idFgts);
@@ -82,7 +94,7 @@ public class PdfFgtsDAO {
                 p.setSimplesFgts(simplesFgts);
                 p.setRemuneracaoFgts(remuneracaoFgts);
                 p.setTrabalhadoresFgts(trabalhadoresFgts);
-                p.setAliquotafgts(aliquotafgts);
+                p.setAliquotaFgts(aliquotaFgts);
                 p.setCodRecolhiFgts(codRecolhiFgts);
                 p.setIdRecolhiFgts(idRecolhiFgts);
                 p.setInscricaoFgts(inscricaoFgts);
@@ -92,6 +104,12 @@ public class PdfFgtsDAO {
                 p.setEncargosFgts(encargosFgts);
                 p.setTotalFgts(totalFgts);
                 p.setDtGeracaoFgts(dtGeracaoFgts);
+                p.setRemuneracao02Fgts(remuneracao02Fgts);
+                p.setTrabalhadores02Fgts(trabalhadores02Fgts);
+                p.setAliquota02Fgts(aliquota02Fgts);
+                p.setDeposito02Fgts(deposito02Fgts);
+                p.setEncargos02Fgts(encargos02Fgts);
+                p.setTotal02Fgts(total02Fgts);
 
                 pdfsfgts.add(p);
 
@@ -110,14 +128,15 @@ public class PdfFgtsDAO {
             String sql = "insert into pdf_fgts ( fpasFgts, simplesFgts, "
                     + "remuneracaoFgts, trabalhadoresFgts,aliquotaFgts,codRecolhiFgts,"
                     + "idRecolhiFgts,inscricaoFgts,competenciaFgts,validadeFgts,"
-                    + "depositoFgts,encargosFgts,totalFgts,dtGeracaoFgts) "
-                    + "values (?, ?, ?, ?,?, ?, ?, ?,?, ?, ?, ?,?, ?)";
+                    + "depositoFgts,encargosFgts,totalFgts,dtGeracaoFgts,"
+                    + "remuneracao02Fgts,trabalhadores02Fgts,aliquota02Fgts,deposito02Fgts,encargos02Fgts,total02Fgts) "
+                    + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, pdffgts.getFpasFgts());
             ps.setString(2, pdffgts.getSimplesFgts());
             ps.setString(3, pdffgts.getRemuneracaoFgts());
             ps.setString(4, pdffgts.getTrabalhadoresFgts());
-            ps.setString(5, pdffgts.getAliquotafgts());
+            ps.setString(5, pdffgts.getAliquotaFgts());
             ps.setString(6, pdffgts.getCodRecolhiFgts());
             ps.setString(7, pdffgts.getIdRecolhiFgts());
             ps.setString(8, pdffgts.getInscricaoFgts());
@@ -127,6 +146,36 @@ public class PdfFgtsDAO {
             ps.setString(12, pdffgts.getEncargosFgts());
             ps.setString(13, pdffgts.getTotalFgts());
             ps.setString(14, pdffgts.getDtGeracaoFgts());
+            if (pdffgts.getRemuneracao02Fgts() != null) {
+                ps.setString(15, pdffgts.getRemuneracao02Fgts());
+            } else {
+                ps.setString(15, null);
+            }
+            if (pdffgts.getTrabalhadores02Fgts() != null) {
+                ps.setString(16, pdffgts.getTrabalhadores02Fgts());
+            } else {
+                ps.setString(16, null);
+            }
+            if (pdffgts.getAliquota02Fgts()!= null) {
+                ps.setString(17, pdffgts.getAliquota02Fgts());
+            } else {
+                ps.setString(17, null);
+            }
+            if (pdffgts.getDeposito02Fgts() != null) {
+                ps.setString(18, pdffgts.getDeposito02Fgts());
+            } else {
+                ps.setString(18, null);
+            }
+            if (pdffgts.getEncargos02Fgts() != null) {
+                ps.setString(19, pdffgts.getEncargos02Fgts());
+            } else {
+                ps.setString(19, null);
+            }
+            if (pdffgts.getTotal02Fgts() != null) {
+                ps.setString(20, pdffgts.getTotal02Fgts());
+            } else {
+                ps.setString(20, null);
+            }
             ps.execute();
             itsOK = true;
         } catch (SQLException e) {
